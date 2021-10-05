@@ -1,4 +1,4 @@
-package com.conestoga.model;
+package com.conestoga;
 
 public class Rectangle {
 
@@ -12,6 +12,10 @@ public class Rectangle {
     }
 
     public Rectangle(int length, int width) {
+
+        validateInput(length);
+        validateInput(width);
+
         this.length = length;
         this.width = width;
     }
@@ -21,6 +25,7 @@ public class Rectangle {
     }
 
     public void setLength(int length) {
+        validateInput(length);
         this.length = length;
     }
 
@@ -29,6 +34,7 @@ public class Rectangle {
     }
 
     public void setWidth(int width) {
+        validateInput(width);
         this.width = width;
     }
 
@@ -38,5 +44,11 @@ public class Rectangle {
 
     public int getArea() {
         return length * width;
+    }
+
+    private void validateInput(int input) {
+        if (input <= 0) {
+            throw new IllegalArgumentException("Negative and Zero values are not allowed");
+        }
     }
 }
